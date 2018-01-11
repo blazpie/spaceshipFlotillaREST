@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SpaceshipRepository extends CrudRepository<Spaceship,Integer> {
-    public Spaceship findByCrewMembers(CrewMember crewMember);
+    public Iterable<Spaceship> findAllByArchivedFalse();
+    public Spaceship findSpaceshipByArchivedFalseAndId(Integer id);
+    public Spaceship findSpaceshipByArchivedFalseAndCrewMembers(CrewMember crewMember);
 }

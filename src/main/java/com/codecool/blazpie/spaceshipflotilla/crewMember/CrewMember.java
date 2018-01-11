@@ -1,11 +1,9 @@
 package com.codecool.blazpie.spaceshipflotilla.crewMember;
 
-import com.codecool.blazpie.spaceshipflotilla.spaceship.Spaceship;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class CrewMember {
@@ -13,8 +11,12 @@ public class CrewMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+    @NotNull
     String firstName;
+    @NotNull
     String lastName;
+    @JsonIgnore
+    Boolean archived;
 
     public Integer getId() {
         return id;
@@ -28,7 +30,10 @@ public class CrewMember {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName (String firstName) throws IllegalArgumentException {
+        if (firstName == null) {
+            throw new IllegalArgumentException("Illegal value for 'firstName': " + firstName);
+        }
         this.firstName = firstName;
     }
 
@@ -36,7 +41,22 @@ public class CrewMember {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName) throws IllegalArgumentException {
+        if (lastName == null) {
+            throw new IllegalArgumentException("Illegal value for 'lastName': " + lastName);
+        }
         this.lastName = lastName;
+    }
+
+    public Boolean isArchived() {
+        return archived;
+    }
+
+    public void archive() {
+        archived = true;
+    }
+
+    public void setVisible() {
+        archived = false;
     }
 }

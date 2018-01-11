@@ -1,6 +1,6 @@
 package com.codecool.blazpie.spaceshipflotilla.spaceship;
 
-
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class SpaceshipDTO {

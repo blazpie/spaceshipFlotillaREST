@@ -1,5 +1,6 @@
 package com.codecool.blazpie.spaceshipflotilla.crewMember;
 
+import com.codecool.blazpie.spaceshipflotilla.response.Response;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,8 +19,8 @@ public class CrewMemberController {
     }
 
     @PostMapping(path = "")
-    public void create(@RequestBody CrewMember crewMember) {
-        service.create(crewMember);
+    public Response create(@RequestBody CrewMember crewMember) {
+        return service.create(crewMember);
     }
 
     @GetMapping(path = "/{id}")
@@ -28,13 +29,12 @@ public class CrewMemberController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public void delete(@PathVariable Integer id) {
-        service.delete(id);
+    public Response delete(@PathVariable Integer id) {
+        return service.delete(id);
     }
 
     @PutMapping(path = "/{id}")
-    public void update(@RequestBody CrewMember crewMember, @PathVariable Integer id) {
-        crewMember.setId(id);
-        service.create(crewMember);
+    public Response update(@RequestBody CrewMember crewMember, @PathVariable Integer id) {
+        return service.update(crewMember);
     }
 }
