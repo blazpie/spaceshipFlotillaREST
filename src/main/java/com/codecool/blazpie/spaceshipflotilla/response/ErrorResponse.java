@@ -10,7 +10,7 @@ public class ErrorResponse implements Response {
     public ErrorResponse(String error, String message) {
         this.code = error;
         this.message = message;
-        setStatus("code");
+        setStatus("error");
     }
 
     public String getCode() {

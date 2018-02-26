@@ -97,6 +97,7 @@ public class SpaceshipService {
             }
         }
         spaceship.setCrewMembers(crewMembers);
+
         return spaceship;
 
     }
